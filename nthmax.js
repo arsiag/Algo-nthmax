@@ -1,34 +1,34 @@
 function findNthMax(arr, n){
-  if (n >= arr.length){
-    return undefined;
-  }
-  var seen = []
-  var nthmax = Infinity;
-  var thismax;
-  var thismaxidx;
-  var k;
-  for (var i = 0; i < n; i++){
-    k = 0;
-    while(seen.includes(k) && k < arr.length){
-      k++;
+    if (n > arr.length){
+        return undefined;
     }
-    thismax = arr[k];
-    thismaxidx = 0;
-    for (var j = 0; j < arr.length; j++){
-      if (arr[j] >= thismax && !seen.includes(j) && arr[j] <= nthmax ){
-        thismax = arr[j];
-        thismaxidx = j;
-      }
+    var seen = []
+    var nthmax = Infinity;
+    var thismax;
+    var thismaxidx;
+    var k;
+    for (var i = 0; i < n; i++){
+        k = 0;
+        while(seen.includes(k) && k < arr.length){
+            k++;
+        }
+        thismax = arr[k];
+        thismaxidx = 0;
+        for (var j = 0; j < arr.length; j++){
+            if (arr[j] >= thismax && !seen.includes(j) && arr[j] <= nthmax ){
+              thismax = arr[j];
+              thismaxidx = j;
+            }
+        }
+        nthmax = thismax;
+        if (!seen.includes(thismaxidx)){
+            seen.push(thismaxidx);
+        }
+      
+  //     console.log(seen);
+  //     console.log("for i: " + i + " ,nthmax and it's index: " + nthmax + " and " + thismaxidx);
     }
-    nthmax = thismax;
-    if (!seen.includes(thismaxidx)){
-      seen.push(thismaxidx);
-    }
-    
-//     console.log(seen);
-//     console.log("for i: " + i + " ,nthmax and it's index: " + nthmax + " and " + thismaxidx);
-  }
-  return nthmax;
+    return nthmax;
 }
 
 
